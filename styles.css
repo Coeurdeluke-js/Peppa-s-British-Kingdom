@@ -1,0 +1,286 @@
+body {
+    font-family: 'Fredoka One', cursive;
+    background-color: #2e3473;
+    color: #fefeff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #fefeff;
+    color: #2e3473;
+    text-align: center;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#headerLogo {
+    height: 80px;
+    margin-right: 15px;
+}
+
+header h1 {
+    margin: 10px 0;
+    font-size: 1.8rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#content {
+    background-color: #fce4ec;
+    color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 280px;
+    height: 150px; /* Altura reducida */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 140px; /* Más espacio para la imagen */
+    z-index: 1; /* Asegurar que esté detrás de la imagen */
+}
+
+#content p {
+    margin: 10px 0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+#cardImage {
+    width: 140px;
+    position: absolute;
+    top: -170px; /* Imagen posicionada más arriba */
+    left: 10px;
+    z-index: 20; /* Asegurar que siempre esté por encima */
+    transition: none; /* Evitar transiciones no deseadas */
+    pointer-events: none; /* Evitar interacciones inesperadas */
+}
+
+button {
+    background-color: #d692af;
+    color: #fefeff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #c27a94;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fefeff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    z-index: 1000;
+}
+
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal img.fade-in {
+    opacity: 1;
+}
+
+.modal img.fade-out {
+    opacity: 0;
+}
+
+.modal.fade-out-background {
+    opacity: 0;
+}
+
+.second-modal {
+    display: none;
+    opacity: 0;
+    background-color: #fefeff;
+    z-index: 1001;
+}
+
+#secondModalImage {
+    position: fixed;
+    width: 130px;
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out; /* Transición más lenta para asegurar el fade out */
+    z-index: 1002;
+    pointer-events: none; /* Evitar interacciones inesperadas */
+}
+
+#secondModalImage.fade-out {
+    opacity: 0 !important; /* Forzar la opacidad 0 para el fade out */
+}
+
+/* Media Queries para Responsividad */
+
+/* Dispositivos pequeños (teléfonos móviles en vertical, 320px y superior) */
+@media only screen and (max-width: 375px) {
+    header {
+        padding: 10px 0;
+        flex-direction: column;
+    }
+    
+    #headerLogo {
+        height: 180px; /* Logo más grande en móviles */
+        margin-right: 0;
+    }
+    
+    header h1 {
+        font-size: 1.3rem;
+        margin: 5px 0;
+    }
+    
+    #content {
+        width: 240px;
+        height: 130px; /* Altura más reducida para móviles */
+        padding: 12px;
+        margin-top: 110px; /* Ajustado para la posición de la imagen */
+    }
+    
+    #cardImage {
+        width: 100px;
+        top: -126px; /* Imagen posicionada más arriba en móviles */
+        left: 5px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    #secondModalImage {
+        width: 100px;
+    }
+}
+
+/* Dispositivos medianos (tablets en vertical, 768px y superior) */
+@media only screen and (min-width: 376px) and (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    #headerLogo {
+        height: 85px; /* Logo más grande */
+    }
+    
+    #content {
+        width: 260px;
+        height: 140px; /* Altura reducida */
+        margin-top: 120px; /* Más espacio para la imagen */
+    }
+    
+    #cardImage {
+        width: 120px;
+        top: -150px; /* Imagen posicionada más arriba */
+    }
+    
+    #secondModalImage {
+        width: 120px;
+    }
+}
+
+/* Dispositivos grandes (laptops/desktops, 992px y superior) */
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+    #content {
+        width: 300px;
+        height: 150px;
+        margin-top: 130px;
+    }
+    
+    #cardImage {
+        top: -160px;
+    }
+}
+
+/* Dispositivos extra grandes (desktops grandes, 1200px y superior) */
+@media only screen and (min-width: 1201px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    #headerLogo {
+        height: 100px;
+    }
+    
+    #content {
+        width: 320px;
+        height: 160px;
+        margin-top: 150px;
+    }
+    
+    #cardImage {
+        width: 160px;
+        top: -180px; /* Posicionada aún más arriba */
+    }
+    
+    #secondModalImage {
+        width: 160px;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Orientación del dispositivo */
+@media (orientation: landscape) and (max-height: 500px) {
+    header {
+        padding: 5px 0;
+    }
+    
+    #headerLogo {
+        height: 60px;
+    }
+    
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    #content {
+        height: 120px;
+        margin-top: 100px;
+    }
+    
+    #cardImage {
+        width: 100px;
+        top: -120px;
+    }
+    
+    #secondModalImage {
+        width: 100px;
+    }
+    
+    button {
+        margin-top: 10px;
+    }
+}
