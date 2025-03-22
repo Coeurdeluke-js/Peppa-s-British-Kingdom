@@ -7,6 +7,24 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* Scrollbar personalizada */
+    scrollbar-width: thin;
+    scrollbar-color: #e2c56f #fefeff;
+}
+
+/* Scrollbar para Chrome, Safari y otros navegadores webkit */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fefeff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e2c56f;
+    border-radius: 10px;
+    border: 2px solid #fefeff;
 }
 
 header {
@@ -21,7 +39,7 @@ header {
 }
 
 #headerLogo {
-    height: 80px;
+    height: 120px; /* Logo más grande */
     margin-right: 15px;
 }
 
@@ -80,6 +98,7 @@ button {
     cursor: pointer;
     margin-top: 15px;
     align-self: center;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -140,6 +159,120 @@ button:hover {
     opacity: 0 !important; /* Forzar la opacidad 0 para el fade out */
 }
 
+/* Estilos para el formulario integrado en el segundo modal */
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    width: 350px; /* Formulario más estrecho */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.registration-logo {
+    width: 300px; /* Logo mucho más grande */
+    margin-bottom: -50px;
+    transform: scale(0.8);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.registration-logo.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.registration-form {
+    background-color: #e2c56f;
+    padding: 25px;
+    border-radius: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transition-delay: 0.3s;
+}
+
+.registration-form.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2e3473;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: 2px solid #fefeff;
+    background-color: #fefeff;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.9rem;
+    color: #2e3473;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #2e3473;
+    box-shadow: 0 0 8px rgba(46, 52, 115, 0.5);
+}
+
+/* Estilo para el grupo de país con bandera */
+.country-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.country-selector select {
+    flex: 1;
+    padding-right: 60px; /* Espacio para la bandera */
+}
+
+.country-flag {
+    position: absolute;
+    right: 12px;
+    width: 30px;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    pointer-events: none; /* Evitar que interfiera con el select */
+}
+
+#registerButton {
+    background-color: #2e3473;
+    color: #fefeff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#registerButton:hover {
+    background-color: #232968;
+    transform: scale(1.02);
+}
+
 /* Media Queries para Responsividad */
 
 /* Dispositivos pequeños (teléfonos móviles en vertical, 320px y superior) */
@@ -180,6 +313,23 @@ button:hover {
     #secondModalImage {
         width: 100px;
     }
+    
+    .registration-container {
+        width: 260px; /* Más estrecho para móviles */
+    }
+    
+    .registration-logo {
+        width: 220px; /* Adaptado para móviles pero aún grande */
+    }
+    
+    .registration-form {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 10px;
+    }
 }
 
 /* Dispositivos medianos (tablets en vertical, 768px y superior) */
@@ -189,7 +339,7 @@ button:hover {
     }
     
     #headerLogo {
-        height: 85px; /* Logo más grande */
+        height: 120px; /* Logo más grande */
     }
     
     #content {
@@ -206,10 +356,22 @@ button:hover {
     #secondModalImage {
         width: 120px;
     }
+    
+    .registration-container {
+        width: 300px; /* Más estrecho para tablets */
+    }
+    
+    .registration-logo {
+        width: 250px; /* Logo más grande */
+    }
 }
 
 /* Dispositivos grandes (laptops/desktops, 992px y superior) */
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
+    #headerLogo {
+        height: 120px; /* Logo más grande */
+    }
+    
     #content {
         width: 300px;
         height: 150px;
@@ -218,6 +380,10 @@ button:hover {
     
     #cardImage {
         top: -160px;
+    }
+    
+    .registration-logo {
+        width: 280px; /* Logo más grande */
     }
 }
 
@@ -228,7 +394,7 @@ button:hover {
     }
     
     #headerLogo {
-        height: 100px;
+        height: 130px; /* Logo aún más grande */
     }
     
     #content {
@@ -250,6 +416,10 @@ button:hover {
         padding: 15px 30px;
         font-size: 1.1rem;
     }
+    
+    .registration-logo {
+        width: 320px; /* Logo extra grande */
+    }
 }
 
 /* Orientación del dispositivo */
@@ -259,7 +429,7 @@ button:hover {
     }
     
     #headerLogo {
-        height: 60px;
+        height: 80px; /* Ajustado para pantallas bajas */
     }
     
     header h1 {
@@ -282,5 +452,21 @@ button:hover {
     
     button {
         margin-top: 10px;
+    }
+    
+    .registration-container {
+        flex-direction: row;
+        width: 90%;
+        max-width: 580px;
+    }
+    
+    .registration-logo {
+        width: 180px;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    
+    .registration-form {
+        flex: 1;
     }
 }
