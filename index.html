@@ -15,7 +15,7 @@
         <img src="logo.svg" alt="Logo" class="modal-image">
     </div>
     <header>
-        <img src="logo2.png" alt="Logo 2" id="headerLogo">
+        <img src="logo.svg" alt="Logo 2" id="headerLogo">
         <h1>Peppa's British Kingdom</h1>
     </header>
     <main>
@@ -27,6 +27,52 @@
     </main>
     <div id="secondModal" class="modal second-modal">
         <img src="image.png" alt="Peppa" id="secondModalImage">
+        <div class="registration-container">
+            <img src="logo.svg" alt="Logo" id="registrationLogo" class="registration-logo">
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <div class="country-selector">
+                        <select id="country" name="country" required>
+                            <option value="" disabled selected>Select your country</option>
+                            <option value="ar">Argentina</option>
+                            <option value="br">Brazil</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="us">United States</option>
+                            <option value="ca">Canada</option>
+                            <option value="au">Australia</option>
+                            <option value="cn">China</option>
+                            <option value="es">Spain</option>
+                            <option value="fr">France</option>
+                            <option value="de">Germany</option>
+                            <option value="in">India</option>
+                            <option value="it">Italy</option>
+                            <option value="jp">Japan</option>
+                            <option value="mx">Mexico</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <img src="flags/unknown.png" alt="Country flag" id="countryFlag" class="country-flag">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" id="registerButton">Register</button>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
